@@ -3,22 +3,20 @@ rvm:
 - 2.2.0
 branches:
   only:
-    - master
+  - master
 gemfile:
 - Gemfile
 before_script:
-- psql -c 'create database ex_rails_test_db' -U postgres
+- psql -c 'create database test_db' -U postgres
 - bundle exec rake db:create db:migrate db:schema:load
 deploy:
   provider: heroku
   api_key:
-    secure: 
+    secure: oJNTPqH0B6ZRdR1AT3TLhAsAK1mAzwEcXoDcQuqtyleojvSPpqb2v40Sk9mwzbnMbPJQPb1yrygW6vscEmpzG2wUsMIKxclnJAGytpMd09/F1u43bjlIaJpbidGwnXSL2IHK8wQTK+h5GoG58BgihXjcWMttT+Ll87gyasX6hpFYLcHPDl9EE1BddbE9q4jJF47MX4AjuYjdHynbzFt5za0fvu28azNs9+1ZUZbZN70TGedURPXwvd7e6QJD419tJMJMvvvCCLFrb0bWiJd4dOH5pWsdp5EIM9h9jkoMvsOKtv02kU3CPLKPcqsGuw1aJFhfJXofZQvIXtfpSzWxNEFwolCxMokHA6BJzVqljMWtcN8/cAuD12EQqo8cigtCDhl9D4EOv3ay/ipg70uYOPfs+aSNBQMu7v7avgOUeGhlaTMCPxJq0W5Ji9r+gtCYOcgTX7/racVxqUmYd0KU3kUBpSS08x5au0m8uahavttlDH9rgQggVoQ+W38/Dn++0fNXuSTW2rgs+ei9d4jjVz4Su+WHHo2MOpi2OlLBHYt2y7xo2+vEXzIuekDz7h1H7JllJhn6TQaQ1y3iFeKOapEOCRl/6CsR4cIzSm6YmKts1b18aKYOo40LXWsvCKRFxEC7BB3zk12vGxjjovlOPpFcuHDfTTFfzaWgoBmEAMY=
   app: blog-2
   run:
-    - "rake db:reset"
-    - "rake db:migrate"
-    - "rake db:seed"
-    - restart
+  - rake db:migrate
+  - restart
   on:
     branch: master
     rvm: 2.2.0
