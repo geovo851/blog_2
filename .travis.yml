@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+- 2.2.0
+branches:
+  only:
+    - master
+gemfile:
+- Gemfile
+before_script:
+- psql -c 'create database ex_rails_test_db' -U postgres
+- bundle exec rake db:create db:migrate db:schema:load
+deploy:
+  provider: heroku
+  api_key:
+    secure: 
+  app: blog-2
+  run:
+    - "rake db:reset"
+    - "rake db:migrate"
+    - "rake db:seed"
+    - restart
+  on:
+    branch: master
+    rvm: 2.2.0
