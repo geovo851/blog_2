@@ -10,7 +10,8 @@ class BlogController < ApplicationController
   end
 
   def article
-    @artcile = Article.find(params[:id])
+    @article = Article.find(params[:id])
+    @count_comments = @article.comments.count
   end
 
   def about

@@ -1,4 +1,4 @@
-<% provide(:title, @artcile.title ) %>
+<% provide(:title, @article.title ) %>
 
 <div class="container-fluid"> 
   <div class="row">
@@ -7,18 +7,29 @@
 
     <div class="container">
       <div class="page-header">
-        <h1 id="article_title"><%= @artcile.title %></h1>
+        <h1 id="article_title"><%= @article.title %></h1>
       </div>
       <p>
-        <%= "by #{@artcile.user.name} on #{l @artcile.updated_at, :format => :long }" %>
+        <%= "by #{@article.user.name} on #{l @article.updated_at, :format => :long }" %>
       </p>
       <p>
-        <%= image_tag(@artcile.photo) if @artcile.photo? %></p>
+        <%= image_tag(@article.photo) if @article.photo? %></p>
       <p>
-        <%= sanitize(@artcile.text) %>
+        <%= sanitize(@article.text) %>
       </p>
+
+      <h2 id="count_comment"><%= "#{@count_comments} Comments" %></h2>
+      <div id="comments">
+        <%= render @article.comments %>
+      </div>
+
+
+      <h2>Add a comment:</h2>
+      <div id="empty-body"></div>
+      <%= render 'comments/form' %>
+
       <%= link_to 'Back', :back, class: "btn btn-default btn-sm" %>
     </div>
-    
+
   </div>
 </div>

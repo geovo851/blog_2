@@ -1,0 +1,18 @@
+<div>
+  <p>
+    <span id="user-comment"><%= comment.user.name %></span>
+    <span id="comment-date"> - <%= l comment.updated_at, format: :long %></span>
+  </p>
+   
+  <div class="comments">
+    <%= comment.body %>
+  </div>
+
+  <p>
+    <% if permitted_to? :delete, comment %>
+      <%= link_to 'Destroy Comment', [comment.article, comment],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
+</div>

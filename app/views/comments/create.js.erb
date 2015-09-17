@@ -1,0 +1,8 @@
+<% if @comment.id %>
+  $('#empty-body').html('');
+  $('#count_comment').html('<%= j"#{@count_comments} Comments" %>');
+  $("<%= j render(partial: 'comments/comment', locals: {comment: @comment}) %>").appendTo($("#comments"));
+  $('#comment_body').val('');
+<% else %>
+  $('#empty-body').html('Comment is empty');
+<% end %>

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'article/show/:id' => 'blog#article', as: 'blog_article'
   
   scope :admin do 
-   resources :articles
+    resources :articles do
+      resources :comments, only: [:create, :destroy]
+    end
   end
   
   devise_for :users

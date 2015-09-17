@@ -6,7 +6,7 @@ authorization do
 
   role :admin do
     has_permission_on :blog, :to => [:index, :article, :about, :contact]
-    has_permission_on [:articles], :to => :manage
+    has_permission_on [:articles, :comments], :to => :manage
     
     has_permission_on :admin, :to => :index
   end
@@ -14,9 +14,9 @@ authorization do
   role :user do
     has_permission_on :blog, :to => [:index, :article, :about, :contact]
 
-    # has_permission_on :orders, :to => [:show, :create, :update, :delete] do
-    #   if_attribute :user_id => is {user.id}
-    # end
+    has_permission_on :comments, :to => [:create, :delete] do
+      if_attribute :user_id => is {user.id}
+    end
 
     # has_permission_on :products_orders, :to => [:show, :create, :update, :delete] do
     #   if_attribute :order => { :user_id => is { user.id } }
