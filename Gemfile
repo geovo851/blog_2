@@ -50,3 +50,8 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'declarative_authorization', github: "stffn/declarative_authorization"
+
+gem 'kaminari'
+gem 'bootstrap-sass'

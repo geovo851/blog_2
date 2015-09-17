@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blog2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= yield(:title)%> | Hardware and tech</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <%= render 'shared/navbar' %>
 
-</body>
+    <div class='main-page-content <%= controller.controller_name %>'>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert #{bootstrap_class_for(key)} flash") %>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; Hardware and tech 2015. All Rights Reserved. </p>
+    </footer>
+
+  </body>
 </html>
