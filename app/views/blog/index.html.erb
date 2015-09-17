@@ -4,9 +4,7 @@
 <div class="container-fluid"> 
   <div class="row">
 
-    <%= render 'shared/side_bar' %>
-
-    <div class="col-sm-9 col-md-10">
+    <div class="col-sm-12 col-md-12">
 
     <div class="container">
       <div class="page-header">
@@ -14,14 +12,14 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-10 col-md-8 sidebar">
+        <div class="col-sm-12 col-md-12">
           <% if @articles.empty? %>
             <b>No articles</b>
           <% else %>
 
             <div class="table-responsive">
               <table class="table ">
-                <tbody id="products">
+                <tbody id="articles">
                   <%= render partial: "article", :collection => @articles, :as => :article %>
                 </tbody>
               </table>

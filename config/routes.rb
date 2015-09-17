@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+  get 'admin' => 'admin#index', as: 'admin'
+  get 'contact' => 'blog#contact', as: 'blog_contact'
+  get 'about' => 'blog#about', as: 'blog_about'
+  get 'article/show/:id' => 'blog#article', as: 'blog_article'
+  
+  scope :admin do 
+   resources :articles
+  end
+  
   devise_for :users
-  root 'articles#index'
+  root 'blog#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

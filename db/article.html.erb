@@ -1,0 +1,29 @@
+<% provide(:title, @article.title ) %>
+
+<div class="container-fluid"> 
+  <div class="row">
+
+    <%= render 'shared/side_bar' %>
+
+    <div class="col-sm-9 col-md-10">
+
+    <div class="container">
+      <div class="page-header">
+        <h1 id="name_product"><%= @article.title %></h1>
+      </div>
+      <p>
+        <%= "by #{@article.user.email} #{@article.updated_at}" %>
+      </p>
+      <p>
+        <%= image_tag(@article.photo) if @article.photo? %>
+      </p>
+
+      <p>
+        <%= @article.body %>
+      </p>
+      
+      <%= link_to 'Back', :back, class: "btn btn-default btn-sm" %>
+    </div>
+    
+  </div>
+</div>

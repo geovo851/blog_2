@@ -1,0 +1,15 @@
+<div class="container"> 
+  <div class="col-sm-12 col-md-12">
+    <div class="page-header">
+      <h1 id="article_title"><%= @article.title %></h1>
+    </div>
+    <p>
+      <%= image_tag(@article.photo) if @article.photo? %>
+    </p>
+    <p>
+      <%= sanitize(@article.text) %>
+    </p>
+    <h3><%= link_to 'Back', :back %></h3>
+
+  </div>
+</div>

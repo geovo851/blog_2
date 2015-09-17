@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917081231) do
+ActiveRecord::Schema.define(version: 20150917131339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20150917081231) do
     t.string   "title"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "photo_small"
+    t.string   "photo"
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150917081231) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "role_id"
+    t.string   "name"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
