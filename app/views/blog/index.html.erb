@@ -11,12 +11,14 @@
         <h2 class="articles-header">Articles</h2>
       </div>
 
-      <p>
-        <%= button_to new_article_path, method: :get, params: { author: true }, class: 'btn btn-primary' do %>
-          <span class="glyphicon glyphicon-plus"></span>
-          Add article
-        <% end %>
-      </p>
+      <% if permitted_to? :new, :articles %>
+        <p>
+          <%= button_to new_article_path, method: :get, params: { author: true }, class: 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon-plus"></span>
+            Add article
+          <% end %>
+        </p>
+      <% end %>
 
       <div class="row">
         <div class="col-sm-12 col-md-12">
