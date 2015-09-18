@@ -1,17 +1,20 @@
 authorization do
   role :guest do
-    has_permission_on :blog, :to => [:index, :article, :about, :contact]
+    has_permission_on :blog, :to => [:index, :article, :about]
+    has_permission_on :messages, :to => [:new, :create]
   end
 
   role :admin do
-    has_permission_on :blog, :to => [:index, :article, :about, :contact]
+    has_permission_on :blog, :to => [:index, :article, :about]
     has_permission_on [:articles, :comments, :users], :to => :manage
-    
+    has_permission_on :messages, :to => [:index, :new, :create, :delete, :show]
+
     has_permission_on :admin, :to => :index
   end
 
   role :user do
-    has_permission_on :blog, :to => [:index, :article, :about, :contact]
+    has_permission_on :blog, :to => [:index, :article, :about]
+    has_permission_on :messages, :to => [:new, :create]
 
     has_permission_on :comments, :to => [:create, :delete] do
       if_attribute :user_id => is {user.id}
@@ -19,8 +22,9 @@ authorization do
   end
 
   role :author do
-    has_permission_on :blog, :to => [:index, :article, :about, :contact]
-
+    has_permission_on :blog, :to => [:index, :article, :about]
+    has_permission_on :messages, :to => [:new, :create]
+    
     has_permission_on :comments, :to => [:create, :delete] do
       if_attribute :user_id => is {user.id}
     end

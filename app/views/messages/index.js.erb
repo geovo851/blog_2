@@ -1,0 +1,3 @@
+$('tbody#messages').html('<%= escape_javascript render(partial: "message", :collection => @messages, :as => :message) %>');
+
+$('#paginator').html('<%= escape_javascript(paginate(@messages, :remote => true).to_s) %>');

@@ -1,0 +1,30 @@
+<%= form_for @message, :html => { multipart: true, class: "form-horizontal" } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :sender, 'Your e-mail*', class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :sender, size: 22, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :title, 'Subject*', class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :title, size: 22, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, 'Text*', class: "col-sm-1 control-label" %>
+    <div class="col-sm-7">
+      <%= f.text_area :body, cols: 10, rows: 15, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-4">
+      <%= f.submit title_sumbit, class: "btn btn-primary btn-sm"%>
+    </div>
+  </div>
+<% end %>
