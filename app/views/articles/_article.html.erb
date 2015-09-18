@@ -2,7 +2,7 @@
   <td><%= article.id %></td>
   <td>
       <p><%= image_tag(article.photo_small) if article.photo_small? %></p>
-      <p id="article_title"><%= link_to article.title, article_path(article) %></p>
+      <p class="article_title"><%= link_to article.title, article_path(article) %></p>
   </td>
   <td><%= truncate(strip_tags(article.text), length: 400) %></td>
   <td><%= article.user.name %></td>
