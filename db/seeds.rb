@@ -12,14 +12,9 @@ roles = Role.create([
   {title: 'author'}
 ]) if Role.count == 0
 
-articles = Article.all
-articles.each do |a|
-  a.destroy
-end
-
 user = User.first
 
-if user
+if user && Article.count == 0
   article = Article.create([
     {title: 'The Intel Xeon D Review: Performance Per Watt Server SoC Champion?',
     text: '<p>The days that Intel neglected the low end of the server market are over. 

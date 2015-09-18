@@ -9,8 +9,9 @@
       <div class="page-header">
         <h1 id="article_title"><%= @article.title %></h1>
       </div>
-      <p>
-        <%= "by #{@article.user.name} on #{l @article.updated_at, :format => :long }" %>
+      <p class="article-author-date"> by 
+        <span class="author"><%= @article.user.name %> </span>
+        <%= " on #{l @article.updated_at, :format => :long }" %>
       </p>
       <p>
         <%= image_tag(@article.photo) if @article.photo? %></p>
@@ -18,7 +19,7 @@
         <%= sanitize(@article.text) %>
       </p>
 
-      <h2 id="count_comment"><%= "#{@count_comments} Comments" %></h2>
+      <h2 id="count_comment"><%= pluralize(@count_comments, 'Comment') %></h2>
       <div id="comments">
         <%= render @article.comments %>
       </div>

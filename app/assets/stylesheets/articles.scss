@@ -4,6 +4,13 @@
 
 #article_title {
   font-weight: bold;
+  font-family: serif sans-serif;
+  font-size: 30px;
+  a:link {
+    font-weight: bold;
+    font-family: serif sans-serif;
+    font-size: 17px;
+  }
 }
 
 .articles-header {
@@ -11,4 +18,13 @@
   color: #622100;
   font-size: 35px;
   text-align: center;
+}
+
+.article-author-date {
+  color: #686868;
+  font-weight: bold;
+  font-family: serif sans-serif;
+  .author {
+    color: #0099CC;
+  }
 }

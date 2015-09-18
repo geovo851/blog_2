@@ -1,6 +1,6 @@
 <% if @comment.id %>
   $('#empty-body').html('');
-  $('#count_comment').html('<%= j"#{@count_comments} Comments" %>');
+  $('#count_comment').html('<%= j pluralize(@count_comments, "Comment") %>');
   $("<%= j render(partial: 'comments/comment', locals: {comment: @comment}) %>").appendTo($("#comments"));
   $('#comment_body').val('');
 <% else %>

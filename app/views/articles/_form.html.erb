@@ -2,6 +2,7 @@
 
 <%= form_for @article, :html => { multipart: true, class: "form-horizontal" } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <%= hidden_field_tag(:author, @author) %>
 
   <div class="form-group">
     <%= f.label :title, class: "col-sm-1 control-label" %>

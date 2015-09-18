@@ -1,3 +1,14 @@
-// Place all the styles related to the blog controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.article-user {
+  float: left;
+  color: #0099CC;
+  font-weight: bold;
+  .by {
+    color: #686868;
+  }
+}
+
+.article-comment-count {
+  text-align: right;
+  color: #0099CC;
+  font-family: serif sans-serif;
+}

@@ -3,6 +3,26 @@
   <td>
     <p id="article_title"><%= link_to article.title, blog_article_path(article) %></p>
     <p><%= truncate(strip_tags(article.text), length: 1000) %></p>
-    <p>by <%= article.user.name %></p>
+
+      <div class="article-user">
+        <span class="by">by </span><%= article.user.name %>
+      </div>
+
+      <div class="article-comment-count">
+        <%= pluralize(article.comments.count, 'comment') %>
+      </div>
+      
+    <div>
+      <% if permitted_to? :delete, article %>
+        <%= link_to edit_article_path(article, params: { author: true }), method: :get, class: 'btn btn-success btn-xs' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+            Edit
+        <% end %>
+        <%= link_to article_path(article, params: { author: true }), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
+            <span class="glyphicon glyphicon-remove"></span>
+            Delete
+        <% end %>
+      <% end %>
+    </div>
   </td>
 </tr>

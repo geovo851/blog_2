@@ -16,17 +16,25 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @author = params[:author]
   end
 
   def edit
     @article = Article.find(params[:id])
+    @author = params[:author]
   end
 
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id if current_user
+    @author = params[:author]
+
     if @article.save
-      redirect_to articles_path
+      if @author == "true"
+        redirect_to root_path
+      else
+        redirect_to articles_path
+      end
     else
       render 'new'
     end
@@ -34,9 +42,14 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-   
+    @author = params[:author]
+
     if @article.update(article_params)
-      redirect_to articles_path
+      if @author == "true"
+        redirect_to root_path
+      else
+        redirect_to articles_path
+      end
     else
       render 'edit'
     end
@@ -45,8 +58,13 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
- 
-    redirect_to articles_path
+    @author = params[:author]
+
+    if @author == 'true'
+      redirect_to root_path
+    else
+      redirect_to articles_path
+    end
   end
   
   private
